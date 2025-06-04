@@ -1,6 +1,6 @@
 ## Proyecto Urban Routes 
 # Pruebas automatizadas con Selenium para la verificacion de las funciones de Urban Routes con Python
-3 Daniela Malagon, Sprint 8
+Daniela Malagon, Sprint 8
 ## Descripción
 
 
