@@ -1,69 +1,57 @@
-## Proyecto Urban Routes 
+## Proyecto Urban Routes
 
 Daniela Malagon, Sprint 8
-## Descripción
 
+##Descripción
 
-Se realizó el siguiente archivo en Pycharm utilizando todo lo anteriormente aprendido y estudiado, se realizaron las pruebas con ayuda de Pytest  y Selenium, mas especificamente se utilizó el metodo POM (Page Object Model) . Primero realicé la definición de los localizadores, luego se crearon los métodos requeridos y al final ya se pudieron ejecutar las pruebas. Las pruebas que se realizarón debían cubrir el proceso completo para pedir un taxi en la aplicación.
+Este proyecto automatiza pruebas funcionales para la aplicación Urban Routes utilizando Python, Selenium y Pytest bajo el patrón Page Object Model (POM). El objetivo es cubrir el flujo completo para solicitar un taxi en la aplicación, asegurando que cada paso funcione correctamente y que la experiencia del usuario sea estable y confiable.
 
-NOTA: Antes de ejecutar las pruebas, debemos actualizar la URL del servidor, esta es necesita refrescarse. Actualizas la url copiandolo en data, modificas la variable urban_routes_url actualizando entre '', la nueva URL.
+Se desarrollaron localizadores, métodos y pruebas automatizadas que simulan el proceso real de un usuario. Todas las pruebas fueron ejecutadas en PyCharm, y se utilizó el archivo data.py para gestionar la configuración y los datos de prueba, incluyendo la URL del servidor, que debe actualizarse antes de cada ejecución.
 
-## Requisitos
-
+##Requisitos
 - Selenium
 - Python
 - pytest
 - Servidor de Urban Routes
 
-## Instalaciones
+##Instalación
+1. Instala Python
+    Descárgalo desde python.org e instálalo en tu sistema.
+2. Clona el repositorio:
+   git clone <URL-del-repositorio>
+   cd <nombre-del-repositorio>
+3. Instala dependencias (Ejecuta en la terminal):
+   pip install selenium pytest requests
+4. Instala ChromeDriver
+   Descárgalo desde chromedriver.chromium.org
+   Asegúrate de que esté en tu PATH o en el directorio del proyecto.
+5. Configura la URL del servidor
+    Abre data.py y actualiza la variable urban_routes_url con la URL activa del servidor, por ejemplo:
+    urban_routes_url = "https://cnt-35bd9ac8-d7a6-43a8-a508-444759dd0ac3.containerhub.tripleten-services.com?lng=es"
 
-1. Descarga de python
-2. Descarga de Pytest desde PyCharm
-3. Descarga de Github
-4. Descarga de paquete selenium, desde el comando pip install
-5. Descarga de paquete request, desde el comando pip install
-5. Clonar el repositorio
-6. Instalación de ChromeDriver
+##Pruebas Automatizadas Incluidas
+1. Configurar la dirección
+2. Seleccionar la tarifa Comfort
+3. Rellenar el número de teléfono
+4. Agregar una tarjeta de crédito
+5. Escribir un mensaje para el conductor 
+6. Pedir una manta y pañuelos
+7. Pedir 2 helados 
+8. Aparece el modal para buscar un taxi
+9. Esperar a que aparezca la información del conductor en el modal
 
-## Contenido
+##Instrucciones para Ejecutar las Pruebas
+1. Verifica que la URL del servidor en data.py esté actualizada y activa.
+2. Asegúrate de que ChromeDriver esté instalado y accesible. 
+3. Abre una terminal en la carpeta raíz del proyecto. 
+4. Ejecuta el siguiente comando para correr todas las pruebas:
+   pytest main.py
+   #Si tus pruebas están en una carpeta específica, usa:
+     pytest ruta/a/tu/test_file.py
+   #Para ver resultados detallados, agrega la opción -v:
+     pytest -v main.py
 
-El proyecto contine 6 carpetas, el las cuales se encuentra:
-1. data.py: Dentro de este se almacena la información que se enviara en las solicitudes, así mismo las configuraciones para el proyecto en donde se almacenan la ruta al servidor.
-2. main.py: Dentro de este se encuentra las pruebas para realizar el pedido del taxi.
-3. Pages.py: Dentro de esta se encuentran los localizadores de las funciones relacionadas con las distintas páginas de tu aplicación
-4. helpers.py: En esta se encuentra la funcionalidad retrieve_phone_code, el cual devuelve un número de confirmación de teléfono
-5. README.md: El cual guarda la descripción del proyecto.
-6. gitignore: En este se guardan archivos para que Git los descarte
-
-  **A continuación se detallan las pruebas realizadas:**
-
-    1. **Configurar la dirección**
-       
-  
-    2. **Seleccionar la tarifa Comfort.**
-     
-  
-    3. **Rellenar el número de teléfono.**
-    
-  
-    4. **Agregar una tarjeta de crédito**
-      
-  
-    5. **Escribir un mensaje para el controlador.**
-       
-  
-    6. **Pedir una manta y pañuelos**
-       
-  
-    7. **Pedir 2 helados.**
-       
-  
-    8. **Aparece el modal para buscar un taxi.**
-      
-  
-    9. **Esperar a que aparezca la información del conductor en el modal **
-
-
- ## Conclusiones
-
- La aplicacion presenta una pagina estable, las pruebas fueron existosas en los requerimientos solicitados para el trabajo. Se recomienda verificar las siguientes opciones no probadas antes de lanzar la aplicacion para el publico para confirmar que no haya una fallo no revisado en estos pasos.
+##Consideraciones Finales
+- Si la aplicación web cambia de estructura o idioma, revisa y actualiza los selectores y valores esperados en los asserts.
+- Si alguna prueba falla, revisa los mensajes de error y asegúrate de que los datos de prueba sean válidos y la URL del servidor esté disponible. 
+- Se recomienda verificar otras funcionalidades no cubiertas antes de lanzar la aplicación a producción.

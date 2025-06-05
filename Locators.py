@@ -226,3 +226,78 @@ class UrbanRoutesPage:
     def wait_for_driver_information(self):
         WebDriverWait(self.driver, 40).until(
             expected_conditions.visibility_of_element_located(self.driver_information_pop_up))
+
+#import pytest #pruebas adiconales
+
+class TestUrbanRoutes:
+    @classmethod
+    def setup_class(cls):
+        cls.driver = webdriver.Chrome()
+        cls.page = UrbanRoutesPage(cls.driver)
+
+    @classmethod
+    def teardown_class(cls):
+        cls.driver.quit()
+
+    # 1. Verifica que la ruta se establece correctamente.
+    def test_set_route(self):
+        self.driver.get(data.urban_routes_url)
+        self.page.wait_for_load_directions_input()
+        self.page.set_route(data.address_from, data.address_to)
+        assert self.page.get_from() == data.address_from
+        assert self.page.get_to() == data.address_to
+
+    # 2. Comprueba que la selección del plan funciona según lo esperado.
+    def test_select_plan(self):
+        self.page.wait_for_taxi_tariff()
+        self.page.select_comfort_tariff()
+        assert self.page.get_comfort_extras() == "Chocolate"  # Ajusta el valor según tu app
+
+    # 3. Valida que el campo de número de teléfono se complete correctamente.
+    def test_fill_phone_number(self):
+        self.page.click_phone_field()
+        self.page.set_phone_number(data.phone_number)
+        self.page.click_continue_button()
+        # Aquí debes obtener el código de confirmación (simulado o real)
+        code = "1234"  # O usa helpers.retrieve_phone_code(self.driver)
+        self.page.add_phone_code(code)
+        self.page.click_confirm_button()
+        assert self.page.get_phone() == data.phone_number
+
+    # 4. Asegúrate de que los datos de la tarjeta se ingresan y validan correctamente.
+    def test_fill_card(self):
+        self.page.click_payment_method()
+        self.page.click_add_card()
+        self.page.add_card_number(data.card_number)
+        self.page.add_card_code(data.card_code)
+        self.page.click_outside_card_fields()
+        self.page.click_add_card_button()
+        self.page.click_close_payment_method()
+        assert self.page.get_payment_method_selected() == "Card"
+
+    # 5. Verifica que se pueden agregar comentarios para el conductor sin errores.
+    def test_comment_for_driver(self):
+        self.page.add_driver_comment(data.message_for_driver)
+        assert self.page.get_driver_comment() == data.message_for_driver
+
+    # 6. Confirma que los artículos como mantas y pañuelos pueden pedirse correctamente.
+    def test_order_blanket_and_handkerchiefs(self):
+        self.page.click_blanket_toggle_button()
+        assert self.page.get_toggle_button_on() == 'on'
+
+    # 7. Comprueba que se pueden añadir dos helados al pedido sin problemas.
+    def test_order_2_ice_creams(self):
+        self.page.click_add_ice_cream()
+        self.page.click_add_ice_cream()
+        assert self.page.get_ice_cream_number() == '2'
+
+    # 8. Valida que el modelo del coche buscado aparece en los resultados.
+    def test_car_search_model_appears(self):
+        self.page.click_search_taxi()
+        self.page.wait_for_taxi_status()
+        assert self.page.get_taxi_status() == 'Car search'  # Ajusta según tu app
+
+    # 9. Verifica que la información del conductor aparece correctamente en pantalla.
+    def test_driver_info_appears(self):
+        self.page.wait_for_driver_information()
+        assert self.page.get_driver_information() == '4,9'  # Ajusta según tu app
