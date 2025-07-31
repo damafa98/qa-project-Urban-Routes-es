@@ -1,57 +1,51 @@
-## Proyecto Urban Routes
+## Urban Routes Project
 
 Daniela Malagon, Sprint 8
 
-##Descripción
+##Description
 
-Este proyecto automatiza pruebas funcionales para la aplicación Urban Routes utilizando Python, Selenium y Pytest bajo el patrón Page Object Model (POM). El objetivo es cubrir el flujo completo para solicitar un taxi en la aplicación, asegurando que cada paso funcione correctamente y que la experiencia del usuario sea estable y confiable.
+This project automates functional tests for the Urban Routes application using Python, Selenium, and Pytest under the Page Object Model (POM) pattern. The goal is to cover the complete flow for requesting a taxi in the application, ensuring that each step works correctly and that the user experience is stable and reliable.
 
-Se desarrollaron localizadores, métodos y pruebas automatizadas que simulan el proceso real de un usuario. Todas las pruebas fueron ejecutadas en PyCharm, y se utilizó el archivo data.py para gestionar la configuración y los datos de prueba, incluyendo la URL del servidor, que debe actualizarse antes de cada ejecución.
+Locators, methods, and automated tests were developed to simulate the actual process a user would follow. All tests were run in PyCharm, and the data.py file was used to manage configuration and test data, including the server URL, which must be updated before each run.
 
-##Requisitos
+##Requirements
 - Selenium
 - Python
 - pytest
 - Servidor de Urban Routes
 
-##Instalación
-1. Instala Python
-    Descárgalo desde python.org e instálalo en tu sistema.
-2. Clona el repositorio:
-   git clone <URL-del-repositorio>
-   cd <nombre-del-repositorio>
-3. Instala dependencias (Ejecuta en la terminal):
-   pip install selenium pytest requests
-4. Instala ChromeDriver
-   Descárgalo desde chromedriver.chromium.org
-   Asegúrate de que esté en tu PATH o en el directorio del proyecto.
-5. Configura la URL del servidor
-    Abre data.py y actualiza la variable urban_routes_url con la URL activa del servidor, por ejemplo:
+##Installation
+1. Install Python
+2. Download it from python.org and install it on your system.
+3. Clone the repository: git clone <repository-URL>  cd <repository-name>
+4. Install dependencies (Run in the terminal): pip install selenium pytest requests
+5. Install ChromeDriver: Download it from chromedriver.chromium.org (Make sure it is in your PATH or in the project directory)
+6. Configure the server URL: Open data.py and update the variable urban_routes_url with the active server URL, for example:
     urban_routes_url = "https://cnt-35bd9ac8-d7a6-43a8-a508-444759dd0ac3.containerhub.tripleten-services.com?lng=es"
 
-##Pruebas Automatizadas Incluidas
-1. Configurar la dirección
-2. Seleccionar la tarifa Comfort
-3. Rellenar el número de teléfono
-4. Agregar una tarjeta de crédito
-5. Escribir un mensaje para el conductor 
-6. Pedir una manta y pañuelos
-7. Pedir 2 helados 
-8. Aparece el modal para buscar un taxi
-9. Esperar a que aparezca la información del conductor en el modal
+##Included Automated Tests
+1. Set the address
+2. Select the Comfort fare
+3. Enter the phone number
+4. Add a credit card
+5. Write a message for the driver
+6. Request a blanket and tissues
+7. Request 2 ice creams
+8. Modal appears to search for a taxi
+9. Wait for driver information to appear in the modal
 
-##Instrucciones para Ejecutar las Pruebas
-1. Verifica que la URL del servidor en data.py esté actualizada y activa.
-2. Asegúrate de que ChromeDriver esté instalado y accesible. 
-3. Abre una terminal en la carpeta raíz del proyecto. 
-4. Ejecuta el siguiente comando para correr todas las pruebas:
-   pytest main.py
-   #Si tus pruebas están en una carpeta específica, usa:
+##Instructions to Run the Tests
+1. Make sure the server URL in data.py is updated and active.
+2. Ensure ChromeDriver is installed and accessible.
+3. Open a terminal in the root folder of the project.
+4. Run the following command to execute all tests:
+pytest main.py
+   #If your tests are in a specific folder, use:
      pytest ruta/a/tu/test_file.py
-   #Para ver resultados detallados, agrega la opción -v:
+   #For detailed results, add the -v option:
      pytest -v main.py
 
-##Consideraciones Finales
-- Si la aplicación web cambia de estructura o idioma, revisa y actualiza los selectores y valores esperados en los asserts.
-- Si alguna prueba falla, revisa los mensajes de error y asegúrate de que los datos de prueba sean válidos y la URL del servidor esté disponible. 
-- Se recomienda verificar otras funcionalidades no cubiertas antes de lanzar la aplicación a producción.
+##Final Considerations
+- If the web application changes its structure or language, review and update the selectors and expected values in the asserts.
+- If a test fails, review the error messages and make sure the test data is valid and the server URL is available.
+- It is recommended to verify other functionalities not covered before releasing the application to production.
